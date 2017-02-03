@@ -42,6 +42,10 @@ if($resultNum == 0) {
     $response = '{"total_page":'.ceil($resultNum/20).',"total_count":'.$resultNum.',"current_page":'.$curPage.',"radios":['.implode(",", $radios).']}';
     $response = str_replace("\n", "", $response);
     $response = str_replace("\r", "", $response);
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Pragma: no-cache");
+    header("Content-type: application/json; charset=utf-8");
+    header('Access-Control-Allow-Origin: *', false);
     echo $response;
     exit;
 }
